@@ -1,105 +1,109 @@
 import React, { useState, useEffect } from "react";
-import "bootstrap/dist/css/bootstrap.css";
+import "tailwindcss/tailwind.css";
+import './index.css';
+import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom';
 
-const Shop = () => {
+const Shop = ({cart,setCart,cartTotal,setCartTotal}) => {
     const [catalog, setCatalog] = useState([]);
-    const [cart, setCart] = useState([]);
-    const [cartTotal, setCartTotal] = useState(0);
+    const [filteredCatalog, setFilteredCatalog] = useState([]);
+    const [searchQuery, setSearchQuery] = useState("");
 
     useEffect(() => {
-        const fetchData = async () => {
-            const someResponse = await fetch("./products.json");
-            const data = await someResponse.json();
-            setCatalog(data);
-            console.log(data);
+        const fetchCatalog = async () => {
+            try {
+                const response = await fetch("./products.json");
+                const data = await response.json();
+                setCatalog(data);
+                setFilteredCatalog(data); // Initialize filteredCatalog with all products
+            } catch (error) {
+                console.error("Error fetching catalog:", error);
+            }
         };
-        fetchData();
+        fetchCatalog();
     }, []);
 
     useEffect(() => {
-        const total = () => {
-            let totalAmount = 0;
-            for (let i = 0; i < cart.length; i++) {
-                totalAmount += cart[i].price;
-            }
-            setCartTotal(totalAmount);
-            console.log(totalAmount);
-        };
-        total();
+        const totalAmount = cart.reduce((total, item) => total + item.price, 0);
+        setCartTotal(totalAmount);
     }, [cart]);
 
-    const howManyofThis = (id) => {
-        let hmot = cart.filter((cartItem) => cartItem.id === id);
-        return hmot.length;
+    const itemCount = (id) => cart.filter((item) => item.id === id).length;
+
+    const addToCart = (product) => {
+        if (itemCount(product.id) >= 10) return;
+        setCart((prevCart) => [...prevCart, product]);
     };
 
-    const addToCart = (el) => {
-        setCart([...cart, el]);
-    };
-
-    const removeFromCart = (el) => {
-        let itemFound = false;
-        const updatedCart = cart.filter((cartItem) => {
-            if (cartItem.id === el.id && !itemFound) {
-                itemFound = true;
-                return false;
-            }
-            return true;
-        });
-        if (itemFound) {
+    const removeFromCart = (product) => {
+        const itemIndex = cart.findIndex((item) => item.id === product.id);
+        if (itemIndex !== -1) {
+            const updatedCart = [...cart];
+            updatedCart.splice(itemIndex, 1);
             setCart(updatedCart);
         }
     };
 
-    const listItems = catalog.map((el) => (
-        <div className="row border-top border-bottom" key={el.id}>
-            <div className="row main align-items-center">
-                <div className="col-2">
-                    <img className="img-fluid" src={el.image} alt={el.title} />
-                </div>
-                <div className="col">
-                    <div className="row text-muted">{el.title}</div>
-                    <div className="row">{el.category}</div>
-                </div>
-                <div className="col">
-                    <button type="button" className="btn btn-light" onClick={() => removeFromCart(el)}> - </button>{" "}
-                    <button type="button" className="btn btn-light" onClick={() => addToCart(el)}> + </button>
-                </div>
-                <div className="col">
-                    ${el.price} <span className="close">&#10005;</span>{howManyofThis(el.id)}
-                </div>
-            </div>
-        </div>
-    ));
+    const handleSearch = (e) => {
+        const query = e.target.value.toLowerCase();
+        setSearchQuery(query);
+        const filtered = catalog.filter((product) =>
+            product.title.toLowerCase().includes(query) ||
+            product.category.toLowerCase().includes(query)
+        );
+        setFilteredCatalog(filtered);
+    };
 
-    const cartItems = cart.map((el, index) => (
-        <div key={index}>
-            <img className="img-fluid" src={el.image} width={150} alt={el.title} />
-            {el.title} ${el.price}
-        </div>
-    ));
-
+    const navigate = useNavigate();
     return (
-        <div>
-            <h2>STORE SE/ComS3190</h2>
-            <div className="card">
-                <div className="row">
-                    <div className="col-md-8 cart">
-                        <div className="title">
-                            <div className="row">
-                                <div className="col">
-                                    <h4><b>3190 Shopping Cart</b></h4>
-                                </div>
-                                <div className="col align-self-center text-right text-muted">
-                                    <h4><b>Products selected {cart.length}</b></h4>
-                                </div>
-                                <div className="col align-self-center text-right text-muted">
-                                    <h4><b>Order total: ${cartTotal}</b></h4>
-                                </div>
+        <div className="bg-green-900 min-h-screen p-4">
+            <div className="container mx-auto p-4 bg-white rounded-lg shadow-lg">
+                <div className="flex justify-between items-center mb-6">
+                    <h2 className="text-2xl font-bold text-center mx-auto">Cade and Henry's Camping Shop</h2>
+                    <button onClick={() => navigate('/checkout')} className="px-4 py-2 bg-green-900 text-white rounded">Checkout</button>
+                </div>
+
+                {/* Search Bar */}
+                <div className="mb-4">
+                    <input
+                        type="text"
+                        value={searchQuery}
+                        onChange={handleSearch}
+                        placeholder="Search"
+                        className="w-full p-2 border rounded-md"
+                    />
+                </div>
+
+                {/* Catalog Section */}
+                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6">
+                    {filteredCatalog.map((product) => (
+                        <div key={product.id} className="bg-white shadow-lg rounded-lg p-4 flex flex-col items-center">
+                            <img
+                                className="w-32 h-32 object-cover rounded mb-4"
+                                src={product.image}
+                                alt={product.title}
+                            />
+                            <h4 className="text-lg font-semibold text-center">{product.title}</h4>
+                            <p className="text-gray-500 text-center mb-2">{product.category}</p>
+                            <p className="text-green-900 font-bold text-center mb-4">${product.price}</p>
+
+                            {/* Add and Remove Buttons */}
+                            <div className="flex items-center space-x-2">
+                                <button
+                                    className="px-3 py-1 bg-white text-black border border-black rounded"
+                                    onClick={() => removeFromCart(product)}
+                                >
+                                    -
+                                </button>
+                                <span>{itemCount(product.id)}</span>
+                                <button
+                                    className="px-3 py-1 bg-white text-black border border-black rounded"
+                                    onClick={() => addToCart(product)}
+                                >
+                                    +
+                                </button>
                             </div>
                         </div>
-                        <div>{listItems}</div>
-                    </div>
+                    ))}
                 </div>
             </div>
         </div>

@@ -1,10 +1,19 @@
-
-
+import React from 'react';
+import { useState, useEffect } from "react";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Checkout from './checkout.js';
+import Shop from './Shopping';
+import './index.css'; // or './tailwind.css' if that’s the file you created
 function App() {
+  const [cart, setCart] = useState([]);
+  const [cartTotal, setCartTotal] = useState(0);
   return (
-    <div>
-      Hello
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/checkout" element={<Checkout cart={cart} setCart={setCart} cartTotal={cartTotal} setCartTotal={setCartTotal} />} />
+        <Route path="/" element={<Shop cart={cart} setCart={setCart} cartTotal={cartTotal} setCartTotal={setCartTotal} />} /> {/* Default view */}
+      </Routes>
+    </Router>
   );
 }
 

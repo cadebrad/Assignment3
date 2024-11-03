@@ -1,0 +1,199 @@
+[
+  {
+      "id": 1,
+      "title": "Mountain Backpack 40L",
+      "price": 89.99,
+      "description": "A durable, waterproof backpack with multiple compartments and space for all your hiking essentials.",
+      "category": "backpacks",
+      "image": "https://m.media-amazon.com/images/I/81sAcJb1xtL._AC_UY1000_.jpg",
+      "rating": { "rate": 4.5, "count": 250 }
+  },
+  {
+      "id": 2,
+      "title": "4-Season Tent for 2",
+      "price": 159.99,
+      "description": "Lightweight, weather-resistant tent suitable for two people. Includes ground stakes and a carry bag.",
+      "category": "tents",
+      "image": "https://m.media-amazon.com/images/I/61s7h8x4wPL.jpg",
+      "rating": { "rate": 4.8, "count": 300 }
+  },
+  {
+      "id": 3,
+      "title": "Portable Camping Stove",
+      "price": 39.95,
+      "description": "Compact, gas-powered camping stove perfect for quick, easy meals on the go.",
+      "category": "cooking gear",
+      "image": "https://image.made-in-china.com/2f0j00hbKioIEavPYW/High-Quality-Portable-Stove-Outdoor-Picnic-Burner-Mini-Foldable-Camp-Gas-Cooker-Stove-Camping-Gas-Stove.webp",
+      "rating": { "rate": 4.6, "count": 220 }
+  },
+  {
+      "id": 4,
+      "title": "Insulated Sleeping Bag",
+      "price": 79.99,
+      "description": "Warm, lightweight sleeping bag designed for temperatures as low as 20°F (-6°C).",
+      "category": "sleeping bags",
+      "image": "https://m.media-amazon.com/images/I/71h-jrBLJQL._AC_UF1000,1000_QL80_.jpg",
+      "rating": { "rate": 4.7, "count": 150 }
+  },
+  {
+      "id": 5,
+      "title": "LED Camping Lantern",
+      "price": 19.95,
+      "description": "Bright, rechargeable LED lantern with up to 12 hours of light on a single charge.",
+      "category": "lighting",
+      "image": "https://m.media-amazon.com/images/I/61f1GG1wY2L.jpg",
+      "rating": { "rate": 4.3, "count": 80 }
+  },
+  {
+      "id": 6,
+      "title": "Stainless Steel Water Bottle 1L",
+      "price": 24.95,
+      "description": "Durable, BPA-free water bottle with double-wall insulation to keep beverages hot or cold.",
+      "category": "hydration",
+      "image": "https://jaxgoods.com/cdn/shop/files/110-1442388-0-image-1779620_407d13a9-cdc0-4e4c-b6cb-bbd18ed28794.jpg?v=1691965260&width=640",
+      "rating": { "rate": 4.4, "count": 200 }
+  },
+  {
+      "id": 7,
+      "title": "Camping Chair with Cup Holder",
+      "price": 34.99,
+      "description": "Foldable camping chair with a sturdy frame and cup holder, easy to carry.",
+      "category": "camp furniture",
+      "image": "https://i5.walmartimages.com/seo/Ozark-Trail-Basic-Quad-Folding-Outdoor-Adult-Camp-Chair-with-Cup-Holder-Red_5532635d-3e37-4b4a-82cf-71d9d01078f8.9a20fa7f331f4984411102ccb6a12282.jpeg",
+      "rating": { "rate": 4.2, "count": 130 }
+  },
+  {
+      "id": 8,
+      "title": "All-Purpose Camping Hatchet",
+      "price": 29.95,
+      "description": "Compact hatchet for splitting wood and other campsite tasks, with a comfortable grip.",
+      "category": "tools",
+      "image": "https://m.media-amazon.com/images/I/516tIQltrbL._AC_UF894,1000_QL80_.jpg",
+      "rating": { "rate": 4.6, "count": 170 }
+  },
+  {
+      "id": 9,
+      "title": "Sleeping Pad - Self Inflating",
+      "price": 49.99,
+      "description": "Self-inflating sleeping pad for extra comfort and insulation from the ground.",
+      "category": "sleeping gear",
+      "image": "https://m.media-amazon.com/images/I/61JP4NxWahL.jpg",
+      "rating": { "rate": 4.5, "count": 90 }
+  },
+  {
+      "id": 10,
+      "title": "Binoculars with Night Vision",
+      "price": 109.95,
+      "description": "High-quality binoculars with night vision for wildlife observation and stargazing.",
+      "category": "optics",
+      "image": "https://m.media-amazon.com/images/I/71ueJVy2dcL.jpg",
+      "rating": { "rate": 4.7, "count": 60 }
+  },
+    {
+        "id": 11,
+        "title": "Multi-Tool with Pliers",
+        "price": 39.99,
+        "description": "A versatile multi-tool that includes pliers, knives, screwdrivers, and more, perfect for any outdoor situation.",
+        "category": "tools",
+        "image": "https://m.media-amazon.com/images/I/71F9VrMH-fL._AC_UF894,1000_QL80_.jpg",
+        "rating": { "rate": 4.5, "count": 140 }
+    },
+    {
+        "id": 12,
+        "title": "Hiking Trekking Poles",
+        "price": 29.99,
+        "description": "Lightweight and durable trekking poles designed to provide support and stability on uneven terrain.",
+        "category": "hiking gear",
+        "image": "https://cdn11.bigcommerce.com/s-hgn1l9sh63/images/stencil/550w/products/912/62888/df6e617a6b429dce187befc5dc9b438ac4a4fa20__90389.1704839148.386.513.jpg?c=1",
+        "rating": { "rate": 4.6, "count": 110 }
+    },
+    {
+        "id": 13,
+        "title": "Compact First Aid Kit",
+        "price": 19.95,
+        "description": "A compact first aid kit containing essential medical supplies for minor injuries during outdoor adventures.",
+        "category": "safety",
+        "image": "https://m.media-amazon.com/images/I/512V-EypsTL.jpg",
+        "rating": { "rate": 4.4, "count": 75 }
+    },
+    {
+        "id": 14,
+        "title": "Portable Solar Charger",
+        "price": 49.99,
+        "description": "Eco-friendly solar charger to keep your devices powered while you enjoy the great outdoors.",
+        "category": "accessories",
+        "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1eKSrnoTg5wgDMZPia2hEN3NiJkpuyUK5lA&s",
+        "rating": { "rate": 4.3, "count": 90 }
+    },
+    {
+        "id": 15,
+        "title": "Weatherproof Outdoor Blanket",
+        "price": 34.99,
+        "description": "Soft, weather-resistant blanket perfect for picnics or keeping warm at the campsite.",
+        "category": "camp furniture",
+        "image": "https://cdni.llbean.net/is/image/wim/252631_22_41?hei=1095&wid=950&resMode=sharp2&defaultImage=llbprod/252631_22_41",
+        "rating": { "rate": 4.7, "count": 80 }
+    },
+    {
+        "id": 16,
+        "title": "Lightweight Hammock",
+        "price": 49.95,
+        "description": "Portable, easy-to-set-up hammock ideal for relaxing in the great outdoors.",
+        "category": "camp furniture",
+        "image": "https://shop4-h.org/cdn/shop/products/portable-lightweight-hammock-820651.jpg?v=1636388466",
+        "rating": { "rate": 4.6, "count": 100 }
+    },
+    {
+        "id": 17,
+        "title": "Camping Cookware Set",
+        "price": 59.99,
+        "description": "Complete cookware set including pots, pans, and utensils designed for camping and outdoor cooking.",
+        "category": "cooking gear",
+        "image": "https://m.media-amazon.com/images/I/81q6xQdAViL._AC_UF1000,1000_QL80_.jpg",
+        "rating": { "rate": 4.8, "count": 70 }
+    },
+    {
+        "id": 18,
+        "title": "Portable Campfire",
+        "price": 99.99,
+        "description": "A compact, portable campfire for cooking or warmth that’s easy to set up and use.",
+        "category": "camp accessories",
+        "image": "https://m.media-amazon.com/images/I/91bX-JYqH1S.jpg",
+        "rating": { "rate": 4.5, "count": 50 }
+    },
+    {
+        "id": 19,
+        "title": "Adventure Journal",
+        "price": 15.99,
+        "description": "A rugged journal designed for outdoor use, perfect for documenting your adventures and experiences.",
+        "category": "accessories",
+        "image": "https://ih1.redbubble.net/image.1163082736.4549/hj,750x-pad,750x1000,f8f8f8.jpg",
+        "rating": { "rate": 4.4, "count": 65 }
+    },
+    {
+        "id": 20,
+        "title": "Compact Binoculars",
+        "price": 29.99,
+        "description": "Lightweight binoculars designed for birdwatching and wildlife observation on your camping trips.",
+        "category": "optics",
+        "image": "https://m.media-amazon.com/images/I/71481PYwMLL.jpg",
+        "rating": { "rate": 4.3, "count": 90 }
+    },
+    {
+      "id": 21,
+      "title": "Leatherman",
+      "price": 29.99,
+      "description": "Multipurpose tool with everything you need",
+      "category": "tools",
+      "image": "https://www.leatherman.com/dw/image/v2/AAMV_PRD/on/demandware.static/-/Sites-master/default/dw6258f5dd/large/PDP-IMAGES-1520x1520px/supertool-300-silver-fanned.jpg?sw=2000&sh=2000&sm=fit&sfrm=jpg",
+      "rating": { "rate": 4.9, "count": 10 }
+  }
+]
+
+
+
+
+
+
+
+
