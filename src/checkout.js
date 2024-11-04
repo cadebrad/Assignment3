@@ -7,95 +7,57 @@ const Checkout = ({ cart, setCart, setCartTotal }) => {
     const [name, setName] = useState("");
     const [creditCard, setCreditCard] = useState("");
     const [address, setAddress] = useState("");
+    const [totalAmount, setTotalAmount] = useState(0);
 
+    
     useEffect(() => {
-        const totalAmount = cart.reduce((total, item) => total + item.price, 0);
-        setCartTotal(totalAmount);
+        const total = cart.reduce((total, item) => total + item.price, 0);
+        setCartTotal(total);
+        setTotalAmount(total);
     }, [cart, setCartTotal]);
 
-    const removeFromCart = (product) => {
-        const updatedCart = cart.filter(item => item.id !== product.id);
-        setCart(updatedCart);
-    };
-
-    const increaseQuantity = (product) => {
-        const updatedCart = [...cart, product];
-        setCart(updatedCart);
-    };
-
-    const decreaseQuantity = (product) => {
-        const updatedCart = cart.filter(item => item.id !== product.id || (item.id === product.id && itemCount(product.id) > 1));
-        setCart(updatedCart);
-    };
-
-    const itemCount = (id) => cart.filter((item) => item.id === id).length;
-
-    const uniqueCartItems = Array.from(new Set(cart.map(item => item.id))).map(id => {
-        return cart.find(item => item.id === id);
-    });
+    const navigate = useNavigate();
 
     const handlePaymentSubmit = (e) => {
         e.preventDefault();
-        // Handle payment logic here (e.g., API call to process payment)
-        console.log("Payment Information Submitted:", { name, creditCard, address });
+    
+        const orderDetails = {
+            name,
+            address,
+            total: totalAmount,
+        };
+    
+        // Navigate to confirmation page, passing credit card last 4 digits
+        navigate('/confirm', { state: { orderDetails, cart, creditCard } });
     };
 
-    const navigate = useNavigate();
 
     return (
         <div className="bg-green-900 min-h-screen p-4">
             <div className="container mx-auto p-4 bg-white rounded-lg shadow-lg">
-                <div className="flex justify-between items-center mb-6">
-                    <h2 className="text-2xl font-bold text-center mx-auto">Your Shopping Cart</h2>
-                    <button onClick={() => navigate('/')} className="px-4 py-2 bg-green-900 text-white rounded">Continue Shopping</button>
-                </div>
+                <h2 className="text-2xl font-bold text-center mx-auto">Checkout</h2>
 
-                {/* Cart Items Section */}
-                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6">
-                    {cart.length === 0 ? (
-                        <p className="text-center text-gray-600">Your cart is empty.</p>
-                    ) : (
-                        uniqueCartItems.map((product) => (
-                            <div key={product.id} className="bg-white shadow-lg rounded-lg p-4 flex flex-col items-center">
+                {/* Cart Items Summary */}
+                <div className="text-left mb-6">
+                    <h3 className="text-lg font-semibold mb-2">Items in Your Cart</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {cart.map((item, index) => (
+                            <div key={index} className="bg-white shadow-lg rounded-lg p-4 flex flex-col items-center">
                                 <img
                                     className="w-32 h-32 object-cover rounded mb-4"
-                                    src={product.image}
-                                    alt={product.title}
+                                    src={item.image}
+                                    alt={item.title}
                                 />
-                                <h4 className="text-lg font-semibold text-center">{product.title}</h4>
-                                <p className="text-gray-500 text-center mb-2">{product.category}</p>
-                                <p className="text-green-900 font-bold text-center mb-4">${product.price}</p>
-
-                                {/* Add and Remove Buttons */}
-                                <div className="flex items-center space-x-2">
-                                    <button
-                                        className="px-3 py-1 bg-white text-black border border-black rounded"
-                                        onClick={() => decreaseQuantity(product)}
-                                    >
-                                        -
-                                    </button>
-                                    <span>{itemCount(product.id)}</span>
-                                    <button
-                                        className="px-3 py-1 bg-white text-black border border-black rounded"
-                                        onClick={() => increaseQuantity(product)}
-                                    >
-                                        +
-                                    </button>
-                                    <button
-                                        className="px-3 py-1 bg-red-600 text-white rounded"
-                                        onClick={() => removeFromCart(product)}
-                                    >
-                                        Remove
-                                    </button>
-                                </div>
+                                <h4 className="text-lg font-semibold text-center">{item.title}</h4>
+                                <p className="text-green-900 font-bold text-center mb-4">${item.price}</p>
                             </div>
-                        ))
-                    )}
+                        ))}
+                    </div>
                 </div>
 
                 {/* Cart Total */}
                 <div className="mt-6">
-                    <h3 className="text-lg font-bold">Total: ${cart.reduce((total, item) => total + item.price, 0).toFixed(2)}</h3>
+                    <h3 className="text-lg font-bold">Total: ${totalAmount.toFixed(2)}</h3>
                 </div>
 
                 {/* Payment Information Section */}
@@ -122,6 +84,8 @@ const Checkout = ({ cart, setCart, setCartTotal }) => {
                                 required
                                 className="w-full p-2 border rounded-md"
                                 placeholder="1234 5678 9012 3456"
+                                pattern="\d{4} \d{4} \d{4} \d{4}" // Pattern to match xxxx xxxx xxxx xxxx
+                                title="Please enter a credit card number in the format: xxxx xxxx xxxx xxxx"
                             />
                         </div>
                         <div className="mb-4">
@@ -135,20 +99,15 @@ const Checkout = ({ cart, setCart, setCartTotal }) => {
                                 placeholder="123 Main St, City, State, ZIP"
                             />
                         </div>
-                    </form>
-                </div>
 
-                {/* Checkout Button */}
-                {cart.length > 0 && (
-                    <div className="mt-4">
                         <button
-                            onClick={() => navigate('/confirm')}
+                            type="submit"
                             className="px-4 py-2 bg-green-900 text-white rounded"
                         >
                             Proceed to Checkout
                         </button>
-                    </div>
-                )}
+                    </form>
+                </div>
             </div>
         </div>
     );
