@@ -12,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/checkout" element={<Checkout cart={cart} setCart={setCart} cartTotal={cartTotal} setCartTotal={setCartTotal} />} />
         <Route path="/" element={<Shop cart={cart} setCart={setCart} cartTotal={cartTotal} setCartTotal={setCartTotal} />} /> {/* Default view */}
+        
       </Routes>
     </Router>
   );
